@@ -1,25 +1,43 @@
 package Exercise8L;
 
+import org.junit.Test;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestTasklist {
-    public static void main(String[] args) {
-        testContainsStop();
+
+    @Test
+    public void testFindLongestWord() {
+        Text userText = new Text();
+
+        userText.addLine("städa äta springa");
+
+        String longestWord = userText.findLongestWord();
+
+        assertEquals("springa", longestWord);
     }
 
-    public static void testContainsStop() {
-        String case1 = "stop";
-        boolean result1 = DataScan.containsStop(case1);
-        System.out.println("Test Case 1: " + (result1 ? "Passed" : "Failed"));
+    @Test
+    public void testCountCharacters() {
 
-        String case2 = "STOP";
-        boolean result2 = DataScan.containsStop(case2);
-        System.out.println("Test Case 2: " + (result2 ? "Passed" : "Failed"));
+        Text userText = new Text();
 
-        String case3 = "Stop";
-        boolean result3 = DataScan.containsStop(case3);
-        System.out.println("Test Case 3: " + (result3 ? "Passed" : "Failed"));
+        userText.addLine("Hello World");
 
+        int characterCount = userText.countCharacters();
+
+        assertEquals(10, characterCount);  // "Hello World" (10 tecken) + "This is a test sentence." (17 tecken)
+    }
+
+    @Test
+    public void testCountSentences() {
+        Text userText = new Text();
+
+        userText.addLine("This is the first sentence.");
+
+        int sentenceCount = userText.countSentences();
+
+        assertEquals(1, sentenceCount);
     }
 }
 
